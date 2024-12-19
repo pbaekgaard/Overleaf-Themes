@@ -10,6 +10,47 @@
 // @run-at   document-start
 // ==/UserScript==
 
+(function() {
+    'use strict';
+
+    let editorMode = true;
+
+    // Function to check and click the appropriate button
+    function setupKeyListener() {
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.altKey && event.key === 'y') {
+                if (!editorMode) {
+                    const codeButton = Array.from(document.querySelectorAll("button > span > span"))
+                        .find(e => e.textContent === "code");
+                    if (codeButton) {
+                        codeButton.parentElement.parentElement.click();
+                        editorMode = true;
+                    }
+                } else {
+                    const pdfButton = Array.from(document.querySelectorAll("button > span > span"))
+                        .find(e => e.textContent === "picture_as_pdf");
+                    if (pdfButton) {
+                        pdfButton.parentElement.parentElement.click();
+                        editorMode = false;
+                    }
+                }
+            }
+        });
+    }
+
+    // Watch for changes in the DOM
+    const observer = new MutationObserver((mutations, obs) => {
+        const targetElement = document.querySelector("button > span > span");
+        if (targetElement) {
+            setupKeyListener();
+            obs.disconnect(); // Stop observing once the element is found
+        }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+})();
+
+
 GM_addStyle ( `
 .btn-full-height {
  border-right: 0px;
