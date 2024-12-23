@@ -9,29 +9,51 @@
 // @grant    GM_addStyle
 // @run-at   document-start
 // ==/UserScript==
-
 (function() {
     'use strict';
 
     let editorMode = true;
+    let splitView = false;
 
     // Function to check and click the appropriate button
     function setupKeyListener() {
         document.addEventListener('keydown', function(event) {
+            // Toggle between PDF and Editor mode (Ctrl+Alt+Y)
             if (event.ctrlKey && event.altKey && event.key === 'y') {
-                if (!editorMode) {
-                    const codeButton = Array.from(document.querySelectorAll("button > span > span"))
-                        .find(e => e.textContent === "code");
-                    if (codeButton) {
-                        codeButton.parentElement.parentElement.click();
-                        editorMode = true;
+                const menu = document.querySelector("#layout-dropdown-btn");
+                menu.click();
+                if (menu) {
+
+                    const buttons = document.querySelectorAll("ul > a");
+                    console.log(buttons);
+                    if (!editorMode || splitView) {
+                        const editorButton = buttons[1];
+                        if (editorButton) {
+                            editorButton[1].click();
+                            menu.click()
+                            splitView = false;
+                            editorMode = true;
+                        }
+                    } else if (editorMode && !splitView) {
+                        const pdfButton = buttons[2];
+                        if (pdfButton) {
+                            pdfButton.click();
+                            menu.click()
+                            editorMode = false;
+                        }
                     }
-                } else {
-                    const pdfButton = Array.from(document.querySelectorAll("button > span > span"))
-                        .find(e => e.textContent === "picture_as_pdf");
-                    if (pdfButton) {
-                        pdfButton.parentElement.parentElement.click();
-                        editorMode = false;
+                }
+                menu.click();
+            }
+
+            // Enable Splitview (Ctrl+Alt+S)
+            if (event.ctrlKey && event.altKey && event.key === 's') {
+                const menu = document.querySelector('ul.dropdown-menu.show.dropdown-menu-end');
+                if (menu) {
+                    const splitViewButton = menu.querySelector('a.dropdown-item:nth-child(1)');
+                    if (splitViewButton) {
+                        splitViewButton.click();
+                        splitView = true;
                     }
                 }
             }
