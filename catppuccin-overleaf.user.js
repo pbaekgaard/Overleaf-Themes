@@ -188,6 +188,19 @@ GM_addStyle ( `
 	white-space: nowrap;
 }
 
+
+.file-tree ul.file-tree-list li .entity-name:hover::before {
+	background-color: var(--lineChanged);
+	content: " ";
+	left: -9999px;
+	position: absolute;
+	width: 9999px;
+}
+
+.file-tree ul.file-tree-list li .entity-name:hover {
+	background-color: var(--lineChanged);
+}
+
 .dropdown-item:focus, .dropdown-item:hover {
 	background-color: var(--bs-dropdown-link-hover-bg);
 	color: var(--textColor);
