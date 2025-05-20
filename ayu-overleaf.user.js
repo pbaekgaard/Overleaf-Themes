@@ -141,6 +141,15 @@ GM_addStyle ( `
 	color: var(--review-panel-color);
 }
 
+.review-panel-entry {
+	background-color: var(--backgroundColor);
+	border: 1px solid var(--lineChanged);
+	border-radius: var(--border-radius-base);
+	margin-left: var(--spacing-02);
+	padding: var(--spacing-04);
+	width: calc(100% - var(--spacing-04));
+	z-index: 1;
+}
 
 .outline-header-expand-collapse-btn {
 	align-items: center;
