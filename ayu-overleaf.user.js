@@ -151,6 +151,19 @@ GM_addStyle ( `
 	z-index: 1;
 }
 
+
+.file-tree ul.file-tree-list li .entity-name:hover::before {
+	background-color: var(--lineChanged);
+	content: " ";
+	left: -9999px;
+	position: absolute;
+	width: 9999px;
+}
+
+.file-tree ul.file-tree-list li .entity-name:hover {
+	background-color: var(--lineChanged);
+}
+
 .outline-header-expand-collapse-btn {
 	align-items: center;
 	background-color: transparent;
