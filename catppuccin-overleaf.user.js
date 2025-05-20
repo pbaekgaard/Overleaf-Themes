@@ -87,9 +87,168 @@
 
 
 GM_addStyle ( `
+
+:root {
+  /* Base colors */
+  --bg-color: #1e1e2e !important; /* Base */
+  --bg-color-secondary: color-mix(in srgb, var(--bg-color) 92%, white 8%);
+
+  /* Accent / Green */
+  --accentColor: #A6E3A1 !important; /* Green */
+  --accentColorSecondary: #A6E3A1;
+
+  /* Cursor */
+  --cursorColor: #f5c2e7; /* Pink */
+
+  /* Text */
+  --textColor: #cdd6f4 !important; /* Text */
+  --editorTextColor: #ffffff;
+
+  /* Changed lines / Highlights */
+  --lineChanged: #A6E3A180; /* Green with opacity */
+  --editorActiveLine: var(--bg-color);
+
+  /* UI Elements */
+  --editor-toolbar-bg: var(--bg-color);
+  --bs-dropdown-bg: var(--bg-color);
+  --bs-dropdown-header-color: var(--textColor);
+  --actionColor: var(--accentColor) !important;
+  --link-ui: var(--accentColor) !important;
+  --backgroundColor: var(--bg-color) !important;
+  --headerColor: var(--bg-color) !important;
+  --file-tree-item-selected-bg: var(--accentColor) !important;
+  --bs-nav-link-color: var(--accentColor) !important;
+
+  /* Borders and outlines */
+  --outline-bg-color: var(--bg-color-secondary);
+  --toolbar-filetree-bg-color: var(--bg-color-secondary);
+  --editor-resizer-bg-color: var(--bg-color-secondary);
+  --outline-border-color: var(--bg-color-secondary);
+  --toolbar-border-color: var(--bg-color-secondary);
+
+  /* Optional: tweak if needed */
+  --toolbar-header-btn-border-color: var(--bg-color);
+}
+
+
+
+* {
+--review-panel-bg-color: var(--bg-color);
+--panel-heading-color: var(--editorActiveLine);
+--review-panel-border-color: var(--panel-heading-color);
+--review-panel-button-hover-bg-color: var(--accentColor);
+--review-panel-footer-bg-color: var(--panel-heading-color);
+--bg-accent-01: var(--accentColor);
+--review-panel-color: var(--textColor);
+--collapsible-file-header-bg-color: var(--panel-heading-color);
+}
+
+
+.cm-fat-cursor {
+    background-color: var(--cursorColor) !important;
+}
+
+.review-mode-switcher:focus .review-mode-switcher-toggle-button.editing, .review-mode-switcher:hover .review-mode-switcher-toggle-button.editing {
+	background-color: var(--review-panel-border-color);
+}
+.dropdown-item, .dropdown-item:active, .dropdown-item:visited {
+	color: var(--review-panel-color);
+}
+
+.pdf .toolbar.toolbar-pdf {
+	background-color: var(--backgroundColor);
+	height: var(--toolbar-small-height);
+	margin-left: 0;
+	padding-right: var(--spacing-03);
+}
+
+
+.outline-header-expand-collapse-btn {
+	align-items: center;
+	background-color: transparent;
+	border: 0;
+	box-shadow: none;
+	color: var(--outline-content-color);
+	display: flex;
+	flex: 1 0 100%;
+	font-size: inherit;
+	padding: 0 var(--spacing-03) 0 0;
+	text-align: left;
+	vertical-align: inherit;
+	white-space: nowrap;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+	background-color: var(--bs-dropdown-link-hover-bg);
+	color: var(--textColor);
+}
+
+.review-mode-switcher-toggle-button.editing {
+	background-color: var(--review-panel-border-color);
+	color: var(--accentColor);
+}
+.review-panel-comment-input {
+	background-color: var(--panel-heading-color);
+	border: solid 1px var(--neutral-60);
+	border-radius: var(--border-radius-base);
+	color: var(--accentColor);
+	font-size: var(--rp-base-font-size);
+	height: 25px;
+	max-height: 400px;
+	min-height: 25px;
+	overflow-x: hidden;
+	padding: 2px var(--spacing-03);
+	resize: vertical;
+	width: 100%;
+}
+
+.review-panel-entry.review-panel-entry-comment.review-panel-entry-loaded {
+	border: 1px solid var(--accentColorSecondary);
+    background-color: var(--review-panel-bg-color);
+}
+
+.review-panel-footer .review-panel-tab-active {
+	border-top: solid 3px var(--bg-accent-01);
+	color: var(--review-panel-color);
+}
+
+.review-panel-resolved-comments-toggle-reviewer-role {
+	align-items: center;
+	background-color: transparent;
+	border: none;
+	border-radius: 100%;
+	color: var(--accentColor);
+	display: flex;
+	padding: var(--spacing-01);
+}
+
+
+.review-panel-resolved-comments-toggle-reviewer-role:focus, .review-panel-resolved-comments-toggle-reviewer-role:hover {
+	background-color: var(--review-panel-button-hover-bg-color);
+    color: var(--panel-heading-color);
+}
+
+.panel-heading {
+	align-items: center;
+	color: var(--accentColor);
+	background-color: var(--panel-heading-color);
+	display: flex;
+	gap: 2px;
+	padding: var(--spacing-03) var(--spacing-02);
+}
+
+
+
 .btn-full-height {
  border-right: 0px;
 }
+
+.d-flex.gap-2.align-items-center.dropdown-item {
+	color: var(--textColor);
+}
+
+
+
 
 .left-menu {
 	background-color: var(--backgroundColor);
@@ -103,7 +262,9 @@ GM_addStyle ( `
 	z-index: 100;
 }
 
-
+.btn-link.text-left.dropdown-menu-button.dropdown-item {
+	color: var(--textColor);
+}
 
 
 .toolbar.toolbar-header {
@@ -111,28 +272,16 @@ GM_addStyle ( `
 }
 
 .dropdown-menu.show > li * {
-	color: #fff;
+	color: var(--textColor);
 }
 
 .pdf {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 }
 
-:root {
-  --editor-toolbar-bg: #21283e;
-  --bs-dropdown-bg: #21283e;
-  --bs-dropdown-header-color: #fff;
-  --accentColor: #a3d692 !important;
-  --actionColor: #a3d692 !important;
-  --link-ui: #a3d692 !important;
-  --backgroundColor: #21283e !important;
-  --headerColor: #21283e !important;
-  --file-tree-item-selected-bg: #a3d692 !important;
-  --bs-nav-link-color: #a3d692 !important;
-}
 
 .fixed-size-document {
-	background-color: #21283e !important;
+	background-color: var(--bg-color) !important;
 }
 
 .left-menu ul.nav .left-menu-button:active .material-symbols, .left-menu ul.nav .left-menu-button:hover .material-symbols {
@@ -168,13 +317,13 @@ color: var(--accentColor) !important;
 .left-menu .left-menu-setting .form-select {
 	border: 1px solid var(--accentColor);
 	background-color: var(--backgroundColor);
-	color: #fff;
+	color: var(--textColor);
 	appearance: button;
 }
 
 .review-panel-new .review-panel-entry {
-	background-color: #2f3a4c;
-	border: 1px solid rgb(98, 121, 90);
+	background-color: var(--editorActiveLine);
+	border: 1px solid var(--accentColorSecondary);
 	border-radius: var(--border-radius-base);
 	margin-left: var(--spacing-02);
 	padding: var(--spacing-04);
@@ -234,7 +383,7 @@ color: var(--accentColor) !important;
 }
 
 .dropdown-menu {
-  background-color: #21283e;
+  background-color: var(--bg-color);
 }
 .list-unstyled.file-tree-list {
 	background-color: var(--backgroundColor) !important;
@@ -346,8 +495,8 @@ color: var(--accentColor) !important;
 }
 
 .review-panel-new .review-panel-entry {
-	background-color: #2f3a4c;
-	border: 1px solid rgb(84, 117, 72);
+	background-color: var(--editorActiveLine);
+	border: 1px solid var(--accentColorSecondary);
 	border-radius: var(--border-radius-base);
 	margin-left: var(--spacing-02);
 	padding: var(--spacing-04);
@@ -371,7 +520,7 @@ color: var(--accentColor) !important;
 }
 
 .review-panel-new .review-panel-entry {
-	background-color: #2f3a4c;
+	background-color: var(--editorActiveLine);
 	border: 1px solid var(--neutral-20);
 	border-radius: var(--border-radius-base);
 	margin-left: var(--spacing-02);
@@ -410,7 +559,7 @@ color: var(--accentColor) !important;
 }
 
 .review-panel-new .review-panel-comment-body {
-	color: #fff;
+	color: var(--textColor);
 	font-size: var(--font-size-02);
 	overflow-wrap: anywhere;
 	white-space: pre-wrap;
@@ -421,7 +570,7 @@ color: var(--accentColor) !important;
 	background-color: var(--backgroundColor);
 	border: solid 1px rgb(77, 106, 67);
 	border-radius: var(--border-radius-base);
-	color: #fff;
+	color: var(--textColor);
 	font-size: var(--rp-base-font-size);
 	height: 25px;
 	max-height: 400px;
@@ -542,13 +691,13 @@ color: var(--accentColor) !important;
 
 .ol-cm-changed-line {
 	background-color: rgba(0, 0, 0, 0.03);
-	color: #fff;
+	color: var(--textColor);
 }
 
 .cm-line {
 	display: block;
 	padding: 0 2px 0 6px;
-	color: #fff;
+	color: var(--editorTextColor);
 }
 
 .ol-cm-addition-marker {
@@ -562,7 +711,7 @@ color: var(--accentColor) !important;
 	background-color: var(--backgroundColor);
 	border: none;
 	text-decoration: none;
-	color: #fff;
+	color: var(--textColor);
 	resize: none !important;
     outline: none !important;
 }
@@ -646,15 +795,15 @@ div.history-version-selectable:hover > div.history-version-main-details > ol > l
 
 
 .cm-activeLine {
-	background: #2f3a4c !important;
+	background: var(--editorActiveLine) !important;
 }
 
 .outline-container {
-   background-color: #21283e;
+   background-color: var(--bg-color);
 }
 
 .outline-body {
-   background-color: #21283e;
+   background-color: var(--bg-color);
 }
 
 .toolbar-header {
@@ -676,39 +825,39 @@ div.history-version-selectable:hover > div.history-version-main-details > ol > l
 }
 
 .cm-editor {
-background-color: #21283e;
+background-color: var(--bg-color);
 }
 
 .ͼm .cm-gutters {
- background-color: #21283e
+ background-color: var(--bg-color)
 }
 
 .cm-gutterElement.cm-activeLineGutter {
- color: #a3d692;
- background-color: #2f3a4c;
+ color: var(--accentColor);
+ background-color: var(--editorActiveLine);
 }
 
 .ͼm .cm-activeLine {
- background-color: #2f3a4c;
+ background-color: var(--editorActiveLine);
 }
 
 .switch-to-editor-btn, .switch-to-pdf-btn, .switch-to-editor-btn:hover, .switch-to-pdf-btn:hover {
- background-color: #a3d692;
+ background-color: var(--accentColor);
 }
 
 .ol-cm-change.ol-cm-change-c {
-  background-color: #aed69280
+  background-color: var(--lineChanged);
 }
 
 
 .dropdown-item.active {
- color: #a3d692;
-background-color: #2f3a4c;
+ color: var(--accentColor);
+background-color: var(--editorActiveLine);
 }
 
 .chat .new-message textarea {
-background-color: #2f3a4c;
-color: #fff;
+background-color: var(--editorActiveLine);
+color: var(--textColor);
 }
 
 .file-tree ul.file-tree-list li .entity > .entity-name > button.item-name-button {
@@ -716,15 +865,15 @@ color: #fff;
 }
 
 .file-tree:not(.multi-selected) ul.file-tree-list li.selected > .entity > .entity-name > button > span {
-color: #21283e;
+color: var(--bg-color);
 }
 
 .dropdown-menu.show.dropdown-menu-end > li > button > div > span {
- color: #fff;
+ color: var(--textColor);
 }
 
 .dropdown-header {
-  color: #fff;
+  color: var(--textColor);
 }
 
 .dropdown-menu.show.dropdown-menu-end {
@@ -732,11 +881,11 @@ transform: translate(180px, 34px) !important;
 }
 
 .rp-entry-comment {
-	border-color: #a3d692;
+	border-color: var(--accentColor);
 }
 
 .review-panel .rp-entry-list-react {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 }
 
 
@@ -745,9 +894,9 @@ transform: translate(180px, 34px) !important;
 }
 
 .rp-comment-input {
-	background-color: #2f3a4c;
+	background-color: var(--editorActiveLine);
 	border: solid 1px #888;
-	color: #fff;
+	color: var(--textColor);
 }
 
 .rp-nav-item-active {
@@ -756,15 +905,15 @@ transform: translate(180px, 34px) !important;
 }
 
 .rp-nav {
-	background-color: #2f3a4c;
+	background-color: var(--editorActiveLine);
 }
 
 .custom-toggler:hover {
-	background-color: #a3d692;
+	background-color: var(--accentColor);
 }
 
 .rp-comment-content {
-	color: #fff;
+	color: var(--textColor);
 }
 
 .rp-entry-metadata {
@@ -772,19 +921,19 @@ transform: translate(180px, 34px) !important;
 }
 
 .rp-comment-actions > button {
-	color: #a3d692 !important;
+	color: var(--accentColor) !important;
 }
 
 .rp-state-current-file-expanded .rp-entry {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 }
 
 .rp-entry-user {
-	color: #a3d692 !important;
+	color: var(--accentColor) !important;
 }
 
 .review-panel-toolbar {
-	background-color: #2f3a4c;
+	background-color: var(--editorActiveLine);
 	border-bottom: 0px;
 	display: none;
 	flex-basis: 32px;
@@ -796,7 +945,7 @@ transform: translate(180px, 34px) !important;
 
 .review-panel {
 	background-color: #dadfed;
-	border-left: solid 0 #2f3a4c;
+	border-left: solid 0 var(--editorActiveLine);
 	box-sizing: content-box;
 	color: #6b7797;
 	flex-shrink: 0;
@@ -808,10 +957,10 @@ transform: translate(180px, 34px) !important;
 }
 
 .resolved-comments-toggle {
-	background-color: #a3d692;
+	background-color: var(--accentColor);
 	border: solid 1px var(--rp-border-grey);
 	border-radius: var(--border-radius-base);
-	color: #2f3a4c;
+	color: var(--editorActiveLine);
 	display: block;
 	font-size: var(--font-size-02);
 	height: 22px;
@@ -826,41 +975,41 @@ transform: translate(180px, 34px) !important;
 }
 
 .toggle-switch {
-	background-color: #2f3a4c;
+	background-color: var(--editorActiveLine);
 }
 
 .toggle-switch-input:checked + .toggle-switch-label {
-	background-color: #a3d692;
-	color: #2f3a4c;
+	background-color: var(--accentColor);
+	color: var(--editorActiveLine);
 }
 
 .toolbar-pdf-left .compile-button-group {
-	background-color: #a3d692;
+	background-color: var(--accentColor);
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 	height: 28px;
 }
 
 .project-list-upload-project-modal-uppy-dashboard .uppy-Root .uppy-Dashboard-AddFiles-title .toolbar-pdf-left .dropdown > button[disabled].uppy-Dashboard-browse, .toolbar-pdf-left .dropdown > .btn[disabled], .toolbar-pdf-left .dropdown > .btn[disabled]:active, .toolbar-pdf-left .project-list-upload-project-modal-uppy-dashboard .uppy-Root .uppy-Dashboard-AddFiles-title .dropdown > button[disabled].uppy-Dashboard-browse {
-	background-color: #a3d692;
+	background-color: var(--accentColor);
 	color: var(--bs-btn-color);
 	opacity: 1;
 }
 .tok-comment {
-	color: #a3d692 !important;
+	color: var(--accentColor) !important;
 }
 
 .pdfjs-page-number-input input {
-	color: #fff;
-	background-color: #2f3a4c !important;
+	color: var(--textColor);
+	background-color: var(--editorActiveLine) !important;
 }
 
 .cm-gutters {
-	background-color: #21283e !important;
+	background-color: var(--bg-color) !important;
 }
 
 .ide-react-editor-panel {
-	background-color: #21283e !important;
+	background-color: var(--bg-color) !important;
 }
 
 .loading-panel {
@@ -868,7 +1017,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .loading {
-	color: #fff;
+	color: var(--textColor);
 }
 
 .loading-screen {
@@ -876,7 +1025,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .loading-screen .loading-screen-label {
-	color: #fff;
+	color: var(--textColor);
 }
 
 body {
@@ -885,37 +1034,37 @@ body {
 }
 
 .rp-state-current-file-expanded .rp-entry {
-	border-top: 1px solid #a3d692 !important;
-	border-bottom: 1px solid #a3d692 !important;
-	border-right: 1px solid #a3d692 !important;
+	border-top: 1px solid var(--accentColor) !important;
+	border-bottom: 1px solid var(--accentColor) !important;
+	border-right: 1px solid var(--accentColor) !important;
 }
 
 .rp-add-comment-btn:focus, .rp-add-comment-btn:hover, .rp-bulk-actions-btn:focus, .rp-bulk-actions-btn:hover, .rp-entry-button:focus, .rp-entry-button {
-	background-color: #2f3a4c;
-	color: #a3d692;
+	background-color: var(--editorActiveLine);
+	color: var(--accentColor);
 }
 
 
 .rp-add-comment-btn:focus, .rp-add-comment-btn:hover, .rp-bulk-actions-btn:focus, .rp-bulk-actions-btn:hover, .rp-entry-button:focus, .rp-entry-button:hover {
-	background-color: #a3d692;
-	color: #21283e;
+	background-color: var(--accentColor);
+	color: var(--bg-color);
 }
 
 [disabled].rp-add-comment-btn, [disabled].rp-add-comment-btn:focus, [disabled].rp-add-comment-btn:hover, [disabled].rp-bulk-actions-btn, [disabled].rp-bulk-actions-btn:focus, [disabled].rp-bulk-actions-btn:hover, [disabled].rp-entry-button, [disabled].rp-entry-button:focus, [disabled].rp-entry-button:hover {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 	color: #d3d4d8;
 }
 
 .rp-state-current-file .rp-entry-callout-comment, .rp-state-current-file .rp-entry-callout-comment::after {
-	border-color: #a3d692;
+	border-color: var(--accentColor);
 }
 
 .d-inline-grid.btn.btn-secondary.btn-sm {
-	background-color: #a3d692;
+	background-color: var(--accentColor);
 }
 
 .compile-button-group.dropdown.btn-group > button {
-  	background-color: #a3d692;
+  	background-color: var(--accentColor);
 }
 
 .spinner-container  >span {
@@ -926,13 +1075,13 @@ body {
 	background-color: var(--accentColor);
 }
 .cm-vim-panel.cm-panel {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 }
 #layout-dropdown-btn {
 	background-color: var(--backgroundColor);
 }
 .cm-vim-panel.cm-panel input {
-	color: #fff;
+	color: var(--textColor);
 }
 
 
@@ -962,7 +1111,7 @@ body {
 }
 
 .synctex-controls > :hover, .toolbar-pdf-left .compile-button-group > :hover  {
-	background-color: #2f3a4c !important;
+	background-color: var(--editorActiveLine) !important;
 	color: var(--accentColor) !important;
 }
 .selected > .entity > div > div > button > span {
@@ -981,7 +1130,7 @@ body {
 	background-color: var(--backgroundColor) !important;
 }
 .rp-overview-file-header {
-	background-color: #2f3a4c !important;
+	background-color: var(--editorActiveLine) !important;
 }
 
 .rp-state-overview .rp-entry {
@@ -1006,7 +1155,7 @@ body {
 }
 
 .fixed-size-document.jzzuclc.idc0_350 {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 }
 
 .loading-screen .loading-screen-brand::after {
@@ -1019,11 +1168,13 @@ body {
 	right: 0;
 	transition: height .5s;
 	/* color: #000; */
-	filter: brightness(0) saturate(100%) invert(86%) sepia(16%) saturate(745%) hue-rotate(57deg) brightness(92%) contrast(90%);
+    filter: brightness(0) invert(1);
+
+
 }
 
 .loading-screen {
-	background-color: #21283e;
+	background-color: var(--bg-color);
 }
 
 .loading-screen .loading-screen-brand {
@@ -1031,12 +1182,12 @@ body {
 	height: 0;
 	padding-top: 115.3846153846%;
 	position: relative;
-	fill: #2f3a4c !important;
-	color: #2f3a4c !important;
+	fill: var(--editorActiveLine) !important;
+	color: var(--editorActiveLine) !important;
 }
 
 .review-panel-entry.review-panel-entry-comment.review-panel-entry-loaded {
-	border: 1px solid rgb(91, 113, 84);
+	border: 1px solid var(--lineChanged);
 }
 .review-panel-new .review-panel-entry.review-panel-entry-highlighted, .review-panel-new .review-panel-entry.review-panel-entry-selected {
 	border: 1px solid var(--accentColor);
