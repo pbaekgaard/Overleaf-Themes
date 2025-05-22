@@ -129,6 +129,9 @@ GM_addStyle ( `
 --collapsible-file-header-bg-color: var(--panel-heading-color);
 }
 
+.loading-panel {
+	background-color: var(--backgroundColor);
+}
 
 .cm-fat-cursor {
     background-color: var(--cursorColor) !important;
