@@ -197,6 +197,10 @@ GM_addStyle ( `
 	width: 9999px;
 }
 
+.loading-panel {
+	background-color: var(--backgroundColor);
+}
+
 .file-tree ul.file-tree-list li .entity-name:hover {
 	background-color: var(--lineChanged);
 }
